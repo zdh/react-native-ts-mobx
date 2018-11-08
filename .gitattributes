@@ -1,0 +1,2 @@
+*.pbxproj -text
+*.json linguist-language=javascript
