@@ -7,18 +7,17 @@
  */
 
 import * as React from "react";
-import { Platform, StyleSheet, Text, View, StatusBar, ViewStyle, TextStyle } from "react-native";
+import { StyleSheet, Text, View, StatusBar, ViewStyle, TextStyle } from "react-native";
 
 import { observer } from "mobx-react/native";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android: "Double tap R on your keyboard to reload,\n" + "Shake or press menu button for dev menu",
-});
+import store from './App.store';
 
 interface InterfaceProps {}
 
-interface InterfaceState {}
+interface InterfaceState {
+  name: string;
+}
 
 interface InterfaceStyle {
   container: ViewStyle;
@@ -31,10 +30,13 @@ export default class App extends React.Component<InterfaceProps, InterfaceState>
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="#4F6D7A" />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.tsx</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="#4F6D7A"
+        />
+        <Text style={styles.welcome}>{store.welcome}</Text>
+        <Text style={styles.instructions}>{store.start}</Text>
+        <Text style={styles.instructions}>{store.instructions}</Text>
       </View>
     );
   }
